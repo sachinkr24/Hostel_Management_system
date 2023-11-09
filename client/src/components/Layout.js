@@ -24,7 +24,7 @@ const Layout = ({ children }) => {
         <div className="layout">
           <div className="sidebar">
             <div className="logo">
-              <h6>DOC APP</h6>
+              <h6>MESS-MANAGER</h6>
               <hr />
             </div>
             <div className="menu">
@@ -47,8 +47,8 @@ const Layout = ({ children }) => {
           </div>
           <div className="content">
             <div className="header">
-              <div className="header-content">
-                <Badge count={user && user.notifcation.length}>
+              <div className="header-content" style={{cursor:"pointer"}}>
+                <Badge count={user && user.notification.length} onClick={()=>{navigate('/notification')}} >
                   <i class="fa-solid fa-bell"></i>
                 </Badge>
 

@@ -26,7 +26,7 @@ const ApplyDoctor = () => {
       );
       dispatch(hideLoading());
       if (res.data.success) {
-        message.success(res.data.success);
+        message.success("Request to apply has been sent to admin");
         navigate("/");
       } else {
         message.error(res.data.success);
@@ -34,7 +34,7 @@ const ApplyDoctor = () => {
     } catch (error) {
       dispatch(hideLoading());
       console.log(error);
-      message.error("Somthing Went Wrrong ");
+      message.error("Something Went Wrong ");
     }
   };
   return (
