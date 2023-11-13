@@ -79,7 +79,7 @@ const DoctorAppointments = () => {
                 className="btn btn-success"
                 onClick={() => handleStatus(record, "approved")}
               >
-                Approved
+               Resolved
               </button>
               <button
                 className="btn btn-danger ms-2"

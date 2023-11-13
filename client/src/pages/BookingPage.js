@@ -6,6 +6,7 @@ import { DatePicker, message, TimePicker } from "antd";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import { showLoading, hideLoading } from "../redux/features/alertSlice";
+import Input from "antd/es/input/Input";
 
 const BookingPage = () => {
   const { user } = useSelector((state) => state.user);
@@ -101,14 +102,14 @@ const BookingPage = () => {
   }, []);
   return (
     <Layout>
-      <h3>Booking Page</h3>
+      <h3>Comaplaint Page</h3>
       <div className="container m-2">
         {doctors && (
           <div>
             <h4>
               Dr.{doctors.firstName} {doctors.lastName}
             </h4>
-            <h4>Fees : {doctors.feesPerCunsaltation}</h4>
+            <h4>Hostel : {doctors.feesPerCunsaltation}</h4>
             <h4>
               Timings : {doctors.timings && doctors.timings[0]} -{" "}
               {doctors.timings && doctors.timings[1]}{" "}
@@ -125,6 +126,7 @@ const BookingPage = () => {
                 }
                 }
               />
+              
               <TimePicker
                 format="HH:mm"
                 className="m-2"
@@ -133,11 +135,13 @@ const BookingPage = () => {
                   setTime(moment(value).format("HH:mm"));
                 }}
               />
+
+<Input type="text" placeholder="Write Your complaint" />
               <button className="btn btn-primary mt-2" onClick={handleAvailability}>
                 Check Availability
               </button>
               <button className="btn btn-dark mt-2" onClick={handleBooking}>
-                 Book Now
+               Submit
                </button>
              
             </div>

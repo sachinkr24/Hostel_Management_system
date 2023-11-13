@@ -87,7 +87,7 @@ const applyDoctorController = async (req, res) => {
     const notification = adminUser.notification;
     notification.push({
       type: "apply-doctor-request",
-      message: `${newDoctor.firstName} ${newDoctor.lastName} Has Applied For A Doctor Account`,
+      message: `${newDoctor.firstName} ${newDoctor.lastName} Has Applied For A Warden Account`,
       data: {
         doctorId: newDoctor._id,
         name: newDoctor.firstName + " " + newDoctor.lastName,
@@ -97,14 +97,14 @@ const applyDoctorController = async (req, res) => {
     await userModel.findByIdAndUpdate(adminUser._id, { notification });
     res.status(201).send({
       success: true,
-      message: "Doctor Account Applied SUccessfully",
+      message: "Warden Account Applied SUccessfully",
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
       error,
-      message: "Error WHile Applying For Doctotr",
+      message: "Error WHile Applying For warden",
     });
   }
 };
@@ -186,20 +186,20 @@ const bookAppointmentController = async (req, res) => {
     const user = await userModel.findOne({ _id: req.body.doctorInfo.userId });
     user.notification.push({
       type: "New-appointment-request",
-      message: `A new Appointment Request from ${req.body.userInfo.name}`,
+      message: `A new complaint from ${req.body.userInfo.name}`,
       onCLickPath: "/user/appointments",
     });
     await user.save();
     res.status(200).send({
       success: true,
-      message: "Appointment booked succesfully",
+      message: "complaint registered succesfully",
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
       error,
-      message: "Error While Booking Appointment",
+      message: "Error While registering complaint ",
     });
   }
 };
@@ -245,7 +245,7 @@ const userAppointmentsController =async(req,res)=>{
     });
     res.status(200).send({
       success: true,
-      message: "Users Appointments Fetched",
+      message: "Users complaints Fetched",
       data: appointments,
     });
   } catch (error) {
@@ -253,7 +253,7 @@ const userAppointmentsController =async(req,res)=>{
     res.status(500).send({
       success: false,
       error,
-      message: "Error in user appointments",
+      message: "Error in user complaints",
     });
   }
 }

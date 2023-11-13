@@ -37,8 +37,8 @@ const doctorSchema = new mongoose.Schema(
       required: [true, "experience is required"],
     },
     feesPerCunsaltation: {
-      type: Number,
-      required: [true, "fee is required"],
+      type: String,
+      required: [true, "hostel name is required"],
     },
     status: {
       type: String,

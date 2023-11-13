@@ -46,7 +46,7 @@ const changeAccountStatusController = async (req, res) => {
     const notification = user.notification;
     notification.push({
       type: "doctor-account-request-updated",
-      message: `Your Doctor Account Request Has ${status} `,
+      message: `Your warden Account Request Has ${status} `,
       onClickPath: "/notification",
     });
     user.isDoctor=status === "approved" ? true : false;

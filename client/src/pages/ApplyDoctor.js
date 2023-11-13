@@ -129,16 +129,16 @@ const ApplyDoctor = () => {
           </Col>
           <Col xs={24} md={24} lg={8}>
             <Form.Item
-              label="Fees Per Cunsaltation"
+              label="Hostel Name"
               name="feesPerCunsaltation"
               required
               rules={[{ required: true }]}
             >
-              <Input type="text" placeholder="your contact no" />
+              <Input type="text" placeholder="your hostel " />
             </Form.Item>
           </Col>
           <Col xs={24} md={24} lg={8}>
-            <Form.Item label="Timings" name="timings" required>
+            <Form.Item label=" office Timings" name="timings" required>
               <TimePicker.RangePicker format="HH:mm" />
             </Form.Item>
           </Col>

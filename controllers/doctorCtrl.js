@@ -67,7 +67,7 @@ const getDoctorByIdController = async (req, res) => {
       });
       res.status(200).send({
         success: true,
-        message: "Doctor Appointments fetched ",
+        message: "Complaints fetched ",
         data: appointments,
       });
     } catch (error) {
@@ -92,7 +92,7 @@ const getDoctorByIdController = async (req, res) => {
         const notification = user.notification;
         notification.push({
           type: "status-updated",
-          message: `your appointment status is : ${status}`,
+          message: `your complaint status is : ${status}`,
           onCLickPath: "/doctor-appointments",
         });
         await user.save();

@@ -5,13 +5,14 @@ const DoctorList = ({ doctor }) => {
   const navigate = useNavigate();
   return (
     <>
+    <div><h6>Select Hostel to register complaint</h6></div>
       <div
         className="card m-2"
         style={{ cursor: "pointer" }}
         onClick={() => navigate(`/doctor/book-appointment/${doctor._id}`)}
       >
         <div className="card-header">
-          Dr. {doctor.firstName} {doctor.lastName}
+        Mr/Mrs {doctor.firstName} {doctor.lastName}
         </div>
         <div className="card-body">
           <p>
@@ -21,10 +22,10 @@ const DoctorList = ({ doctor }) => {
             <b>Experience</b> {doctor.experience}
           </p>
           <p>
-            <b>Fees Per Cunsaltation</b> {doctor.feesPerCunsaltation}
+            <b>Hostel</b> {doctor.feesPerCunsaltation}
           </p>
           <p>
-            <b>Timings</b> {doctor.timings[0]} - {doctor.timings[1]}
+            <b>Office Timings</b> {doctor.timings[0]} - {doctor.timings[1]}
           </p>
         </div>
       </div>
