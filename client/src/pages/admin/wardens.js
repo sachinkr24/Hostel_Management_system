@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
-import Layout from "./../../components/Layout";
+import Layout from "../../components/Layout";
 import axios from "axios";
 import { message, Table } from "antd";
 
-const Doctors = () => {
-  const [doctors, setDoctors] = useState([]);
+const wardens = () => {
+  const [wardens, setwardens] = useState([]);
   //getUsers
-  const getDoctors = async () => {
+  const getwardens = async () => {
     try {
-      const res = await axios.get("/api/v1/admin/getAllDoctors", {
+      const res = await axios.get("/api/v1/admin/getAllwardens", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
       if (res.data.success) {
-        setDoctors(res.data.data);
+        setwardens(res.data.data);
       }
     } catch (error) {
       console.log(error);
@@ -26,7 +26,7 @@ const Doctors = () => {
     try {
       const res = await axios.post(
         "/api/v1/admin/changeAccountStatus",
-        { doctorId: record._id, userId: record.userId, status: status },
+        { wardenId: record._id, userId: record.userId, status: status },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -43,7 +43,7 @@ const Doctors = () => {
   };
 
   useEffect(() => {
-    getDoctors();
+    getwardens();
   }, []);
 
   const columns = [
@@ -86,10 +86,10 @@ const Doctors = () => {
 
   return (
     <Layout>
-      <h1 className="text-center m-3">All Doctors</h1>
-      <Table columns={columns} dataSource={doctors} />
+      <h1 className="text-center m-3">All wardens</h1>
+      <Table columns={columns} dataSource={wardens} />
     </Layout>
   );
 };
 
-export default Doctors;
+export default wardens;

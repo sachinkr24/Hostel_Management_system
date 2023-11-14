@@ -47,7 +47,7 @@ const Layout = ({ children }) => {
         <div className="layout">
           <div className="sidebar">
             <div className="logo">
-              <h6>MESS-MANAGER</h6>
+              <h6>Hostel Mangement System</h6>
               <hr />
             </div>
             <div className="menu">

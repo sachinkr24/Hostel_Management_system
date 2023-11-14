@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const doctorSchema = new mongoose.Schema(
+const wardenSchema = new mongoose.Schema(
   {
     userId: {
       type: String,
@@ -36,7 +36,7 @@ const doctorSchema = new mongoose.Schema(
       type: String,
       required: [true, "experience is required"],
     },
-    feesPerCunsaltation: {
+    fees: {
       type: String,
       required: [true, "hostel name is required"],
     },
@@ -52,5 +52,5 @@ const doctorSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const doctorModel = mongoose.model("doctors", doctorSchema);
-module.exports = doctorModel;
+const wardenModel = mongoose.model("wardens", wardenSchema);
+module.exports = wardenModel;

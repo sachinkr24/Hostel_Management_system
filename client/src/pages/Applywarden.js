@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "./../components/Layout";
+import Layout from "../components/Layout";
 import { Col, Form, Input, Row, TimePicker, message } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -7,7 +7,7 @@ import { showLoading, hideLoading } from "../redux/features/alertSlice";
 import axios from "axios";
 import moment from "moment";
 
-const ApplyDoctor = () => {
+const Applywarden = () => {
   const { user } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const ApplyDoctor = () => {
     try {
       dispatch(showLoading());
       const res = await axios.post(
-        "/api/v1/user/apply-doctor",
+        "/api/v1/user/apply-warden",
         { ...values, userId: user._id,
           timings: [
             moment(values.timings[0]).format("HH:mm"),
@@ -40,12 +40,12 @@ const ApplyDoctor = () => {
     } catch (error) {
       dispatch(hideLoading());
       console.log(error);
-      message.error("Somthing Went Wrrong ");
+      message.error("Somthing Went Wrong ");
     }
   };
   return (
     <Layout>
-      <h1 className="text-center">Apply Doctor</h1>
+      <h1 className="text-center">Apply warden</h1>
       <Form layout="vertical" onFinish={handleFinish} className="m-3">
         <h4 className="">Personal Details : </h4>
         <Row gutter={20}>
@@ -101,7 +101,7 @@ const ApplyDoctor = () => {
               required
               rules={[{ required: true }]}
             >
-              <Input type="text" placeholder="your clinic address" />
+              <Input type="text" placeholder=" address" />
             </Form.Item>
           </Col>
         </Row>
@@ -130,7 +130,7 @@ const ApplyDoctor = () => {
           <Col xs={24} md={24} lg={8}>
             <Form.Item
               label="Hostel Name"
-              name="feesPerCunsaltation"
+              name="fees"
               required
               rules={[{ required: true }]}
             >
@@ -154,4 +154,4 @@ const ApplyDoctor = () => {
   );
 };
 
-export default ApplyDoctor;
+export default Applywarden;

@@ -1,5 +1,5 @@
 const express = require("express");
-const {getAllUsersController,getAllDoctorsController,changeAccountStatusController}= require("../controllers/adminCtrl");
+const {getAllUsersController,getAllwardensController,changeAccountStatusController}= require("../controllers/adminCtrl");
 const authMiddleware = require("../middlewares/authMiddleware");
 
 //router onject
@@ -7,7 +7,7 @@ const router = express.Router();
 
 //routes
 router.get("/getAllUsers", authMiddleware, getAllUsersController);
-router.get("/getAllDoctors", authMiddleware, getAllDoctorsController);
+router.get("/getAllwardens", authMiddleware, getAllwardensController);
 //post account status
 
 router.post("/changeAccountStatus", authMiddleware, changeAccountStatusController);

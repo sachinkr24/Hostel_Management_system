@@ -11,7 +11,7 @@ import Input from "antd/es/input/Input";
 const BookingPage = () => {
   const { user } = useSelector((state) => state.user);
   const params = useParams();
-  const [doctors, setDoctors] = useState([]);
+  const [wardens, setwardens] = useState([]);
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [isAvailable, setIsAvailable] = useState();
@@ -20,8 +20,8 @@ const BookingPage = () => {
   const getUserData = async () => {
     try {
       const res = await axios.post(
-        "/api/v1/doctor/getDoctorById",
-        { doctorId: params.doctorId },
+        "/api/v1/warden/getwardenById",
+        { wardenId: params.wardenId },
         {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
@@ -29,7 +29,7 @@ const BookingPage = () => {
         }
       );
       if (res.data.success) {
-        setDoctors(res.data.data);
+        setwardens(res.data.data);
       }
     } catch (error) {
       console.log(error);
@@ -42,7 +42,7 @@ const BookingPage = () => {
       dispatch(showLoading());
       const res = await axios.post(
         "/api/v1/user/booking-availability",
-        { doctorId: params.doctorId, date, time },
+        { wardenId: params.wardenId, date, time },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -73,9 +73,9 @@ const BookingPage = () => {
       const res = await axios.post(
         "/api/v1/user/book-appointment",
         {
-          doctorId: params.doctorId,
+          wardenId: params.wardenId,
           userId: user._id,
-          doctorInfo: doctors,
+          wardenInfo: wardens,
           userInfo: user,
           date: date,
           time: time,
@@ -104,15 +104,15 @@ const BookingPage = () => {
     <Layout>
       <h3>Comaplaint Page</h3>
       <div className="container m-2">
-        {doctors && (
+        {wardens && (
           <div>
             <h4>
-              Dr.{doctors.firstName} {doctors.lastName}
+              Dr.{wardens.firstName} {wardens.lastName}
             </h4>
-            <h4>Hostel : {doctors.feesPerCunsaltation}</h4>
+            <h4>Hostel : {wardens.feesPerCunsaltation}</h4>
             <h4>
-              Timings : {doctors.timings && doctors.timings[0]} -{" "}
-              {doctors.timings && doctors.timings[1]}{" "}
+              Timings : {wardens.timings && wardens.timings[0]} -{" "}
+              {wardens.timings && wardens.timings[1]}{" "}
             </h4>
             <div className="d-flex flex-column w-50">
               <DatePicker

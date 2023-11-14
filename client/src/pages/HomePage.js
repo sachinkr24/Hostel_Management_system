@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Layout from "./../components/Layout";
 import { Row } from "antd";
-import DoctorList from "../components/DoctorList";
+import wardenList from "../components/wardenList";
 const HomePage = () => {
   // login user data
-  const[doctors,setDoctors] = useState([])
+  const[wardens,setwardens] = useState([])
   const getUserData = async () => {
     try {
       const res = await axios.get(
-        "/api/v1/user/getAllDoctors",
+        "/api/v1/user/getAllwardens",
         {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
@@ -18,7 +18,7 @@ const HomePage = () => {
       );
 
       if(res.data.success){
-        setDoctors(res.data.data)
+        setwardens(res.data.data)
       }
     } catch (error) {
       console.log(error);
@@ -36,7 +36,7 @@ const HomePage = () => {
     <Layout>
       <h1 className="text-center">Home Page</h1>
       <Row>
-        {doctors && doctors.map((doctor) => <DoctorList doctor={doctor} />)}
+        {wardens && wardens.map((warden) => <wardenList warden={warden} />)}
       </Row>
     </Layout>
   );

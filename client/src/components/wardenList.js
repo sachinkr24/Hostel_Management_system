@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const DoctorList = ({ doctor }) => {
+const wardenList = ({ warden }) => {
   const navigate = useNavigate();
   return (
     <>
@@ -9,23 +9,23 @@ const DoctorList = ({ doctor }) => {
       <div
         className="card m-2"
         style={{ cursor: "pointer" }}
-        onClick={() => navigate(`/doctor/book-appointment/${doctor._id}`)}
+        onClick={() => navigate(`/warden/book-appointment/${warden._id}`)}
       >
         <div className="card-header">
-        Mr/Mrs {doctor.firstName} {doctor.lastName}
+        Mr/Mrs {warden.firstName} {warden.lastName}
         </div>
         <div className="card-body">
           <p>
-            <b>Specialization</b> {doctor.specialization}
+            <b>Specialization</b> {warden.specialization}
           </p>
           <p>
-            <b>Experience</b> {doctor.experience}
+            <b>Experience</b> {warden.experience}
           </p>
           <p>
-            <b>Hostel</b> {doctor.feesPerCunsaltation}
+            <b>Hostel</b> {warden.fees}
           </p>
           <p>
-            <b>Office Timings</b> {doctor.timings[0]} - {doctor.timings[1]}
+            <b>Office Timings</b> {warden.timings[0]} - {warden.timings[1]}
           </p>
         </div>
       </div>
@@ -33,4 +33,4 @@ const DoctorList = ({ doctor }) => {
   );
 };
 
-export default DoctorList;
+export default wardenList;

@@ -10,9 +10,9 @@ export const userMenu = [
       icon: "fa-solid fa-list",
     },
     {
-      name: "Apply Warden",
-      path: "/apply-doctor",
-      icon: "fa-solid fa-user-doctor",
+      name: "Apply warden",
+      path: "/apply-warden",
+      icon: "fa-solid fa-user-warden",
     },
     {
       name: "Profile",
@@ -31,8 +31,8 @@ export const userMenu = [
   
     {
       name: "Wardens",
-      path: "/admin/doctors",
-      icon: "fa-solid fa-user-doctor",
+      path: "/admin/wardens",
+      icon: "fa-solid fa-user-warden",
     },
     {
       name: "Users",

@@ -1,7 +1,7 @@
 const userModel = require("../models/userModels");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const doctorModel = require("../models/doctorModel");
+const wardenModel = require("../models/wardenModel");
 const appointmentModel = require("../models/appointmentModel");
 const moment = require('moment')
 
@@ -79,18 +79,18 @@ const authController = async (req, res) => {
   }
 };
 
-const applyDoctorController = async (req, res) => {
+const applywardenController = async (req, res) => {
   try {
-    const newDoctor = await doctorModel({ ...req.body, status: "pending" });
-    await newDoctor.save();
+    const newwarden = await wardenModel({ ...req.body, status: "pending" });
+    await newwarden.save();
     const adminUser = await userModel.findOne({ isAdmin: true });
     const notification = adminUser.notification;
     notification.push({
-      type: "apply-doctor-request",
-      message: `${newDoctor.firstName} ${newDoctor.lastName} Has Applied For A Warden Account`,
+      type: "apply-warden-request",
+      message: `${newwarden.firstName} ${newwarden.lastName} Has Applied For A Warden Account`,
       data: {
-        doctorId: newDoctor._id,
-        name: newDoctor.firstName + " " + newDoctor.lastName,
+        wardenId: newwarden._id,
+        name: newwarden.firstName + " " + newwarden.lastName,
         onClickPath: "/admin/docotrs",
       },
     });
@@ -157,19 +157,19 @@ const deleteAllNotificationController = async (req, res) => {
   }
 };
 
-const getAllDoctorsController = async (req, res) => {
+const getAllwardensController = async (req, res) => {
   try {
-    const doctors = await doctorModel.find({status:'approved'});
+    const wardens = await wardenModel.find({status:'approved'});
     res.status(200).send({
       success: true,
-      message: "doctors data list",
-      data: doctors,
+      message: "wardens data list",
+      data: wardens,
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
-      message: "erorr while fetching doctors",
+      message: "erorr while fetching wardens",
       error,
     });
   }
@@ -183,7 +183,7 @@ const bookAppointmentController = async (req, res) => {
     req.body.status = "pending";
     const newAppointment = new appointmentModel(req.body);
     await newAppointment.save();
-    const user = await userModel.findOne({ _id: req.body.doctorInfo.userId });
+    const user = await userModel.findOne({ _id: req.body.wardenInfo.userId });
     user.notification.push({
       type: "New-appointment-request",
       message: `A new complaint from ${req.body.userInfo.name}`,
@@ -210,8 +210,8 @@ const bookingAvailabilityController = async (req, res) => {
     const date = moment(req.body.date, 'DD-MM-YYYY').toISOString()
     const fromTime = moment(req.body.time, 'HH-mm').subtract(1, 'hours').toISOString()
     const toTime = moment(req.body.time, 'HH-mm').add(1, 'hours').toISOString()
-    const doctorId = req.body.doctorId
-    const appointments = await appointmentModel.find({doctorId,date,time:{
+    const wardenId = req.body.wardenId
+    const appointments = await appointmentModel.find({wardenId,date,time:{
       $gte:fromTime,$lte:toTime
     }
   })
@@ -262,10 +262,10 @@ module.exports = {
   loginController,
   registerController,
   authController,
-  applyDoctorController,
+  applywardenController,
   getAllNotificationController,
   deleteAllNotificationController,
-  getAllDoctorsController,
+  getAllwardensController,
   bookAppointmentController,
   bookingAvailabilityController,
   userAppointmentsController

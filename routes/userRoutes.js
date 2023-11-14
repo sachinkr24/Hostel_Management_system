@@ -4,10 +4,10 @@ const {
   loginController,
   registerController,
   authController,
-  applyDoctorController,
+  applywardenController,
   getAllNotificationController,
   deleteAllNotificationController,
-  getAllDoctorsController,
+  getAllwardensController,
   bookAppointmentController,
   bookingAvailabilityController
 } = require("../controllers/userCtrl");
@@ -26,7 +26,7 @@ router.post("/register", registerController);
 router.post("/getUserData", authMiddleware, authController);
 
 
-router.post("/apply-doctor", authMiddleware, applyDoctorController);
+router.post("/apply-warden", authMiddleware, applywardenController);
 
 
 router.post(
@@ -42,9 +42,9 @@ router.post(
 );
 
 router.get(
-  "/getAllDoctors",
+  "/getAllwardens",
   authMiddleware,
-  getAllDoctorsController
+  getAllwardensController
 );
 
 router.post(

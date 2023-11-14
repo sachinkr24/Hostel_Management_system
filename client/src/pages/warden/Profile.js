@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Layout from "./../../components/Layout";
+import Layout from "../../components/Layout";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { Col, Form, Input, Row, TimePicker, message } from "antd";
@@ -9,7 +9,7 @@ import moment from "moment";
 
 const Profile = () => {
   const { user } = useSelector((state) => state.user);
-  const [doctor, setDoctor] = useState(null);
+  const [warden, setwarden] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const params = useParams();
@@ -18,7 +18,7 @@ const Profile = () => {
     try {
       dispatch(showLoading());
       const res = await axios.post(
-        "/api/v1/doctor/updateProfile",
+        "/api/v1/warden/updateProfile",
         {
           ...values,
           userId: user._id,
@@ -47,10 +47,10 @@ const Profile = () => {
     }
   };
 
-  const getDoctorInfo = async () => {
+  const getwardenInfo = async () => {
     try {
       const res = await axios.post(
-        "/api/v1/doctor/getDoctorInfo",
+        "/api/v1/warden/getwardenInfo",
         { userId: params.id },
         {
           headers: {
@@ -59,7 +59,7 @@ const Profile = () => {
         }
       );
       if (res.data.success) {
-        setDoctor(res.data.data);
+        setwarden(res.data.data);
       }
     } catch (error) {
       console.log(error);
@@ -67,22 +67,22 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    getDoctorInfo();
+    getwardenInfo();
     //eslint-disable-next-line
   }, []);
   return (
     <Layout>
       <h1>Manage Profile</h1>
-      {doctor && (
+      {warden && (
         <Form
           layout="vertical"
           onFinish={handleFinish}
           className="m-3"
           initialValues={{
-            ...doctor,
+            ...warden,
             timings: [
-              moment(doctor.timings[0], "HH:mm"),
-              moment(doctor.timings[1], "HH:mm"),
+              moment(warden.timings[0], "HH:mm"),
+              moment(warden.timings[1], "HH:mm"),
             ],
           }}
         >
