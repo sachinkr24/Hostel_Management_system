@@ -40,6 +40,7 @@ const Users = () => {
       dataIndex: "iswarden",
       render: (text, record) => <span>{record.iswarden ? "Yes" : "No"}</span>,
     },
+    //block
     {
       title: "Actions",
       dataIndex: "actions",

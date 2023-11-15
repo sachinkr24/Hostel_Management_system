@@ -9,7 +9,9 @@ const {
   deleteAllNotificationController,
   getAllwardensController,
   bookAppointmentController,
+  uploadFile,
   bookingAvailabilityController
+
 } = require("../controllers/userCtrl");
 const authMiddleware = require("../middlewares/authMiddleware");
 
@@ -22,6 +24,7 @@ router.post("/login", loginController);
 
 router.post("/register", registerController);
 
+// /path(posting req), authMiddleware(getting token), authController(getting response))
 
 router.post("/getUserData", authMiddleware, authController);
 
@@ -58,6 +61,10 @@ router.post(
   authMiddleware,
   bookingAvailabilityController
 );
+
+router.post("/upload",
+ authMiddleware,
+  uploadFile); // Add the route for file upload
 
 router.get(
   "/user-appointments",

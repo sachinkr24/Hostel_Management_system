@@ -6,7 +6,7 @@ import axios from "axios";
 import moment from "moment";
 import { message, Table } from "antd";
 
-const wardenAppointments = () => {
+const WardenAppointments = () => {
   const [appointments, setAppointments] = useState([]);
 
   const getAppointments = async () => {
@@ -95,10 +95,10 @@ const wardenAppointments = () => {
   ];
   return (
     <Layout>
-      <h1>Appoinmtnets Lists</h1>
+      <h1>Complaint Lists</h1>
       <Table columns={columns} dataSource={appointments} />
     </Layout>
   );
 };
 
-export default wardenAppointments;
+export default WardenAppointments;

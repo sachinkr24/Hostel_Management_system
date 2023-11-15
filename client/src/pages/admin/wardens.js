@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Layout from "../../components/Layout";
+import Layout from "./../../components/Layout";
 import axios from "axios";
 import { message, Table } from "antd";
 
-const wardens = () => {
-  const [wardens, setwardens] = useState([]);
+const Wardens = () => {
+  const [wardens, setWardens] = useState([]);
   //getUsers
   const getwardens = async () => {
     try {
@@ -14,7 +14,7 @@ const wardens = () => {
         },
       });
       if (res.data.success) {
-        setwardens(res.data.data);
+        setWardens(res.data.data);
       }
     } catch (error) {
       console.log(error);
@@ -92,4 +92,4 @@ const wardens = () => {
   );
 };
 
-export default wardens;
+export default Wardens;

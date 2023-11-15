@@ -168,8 +168,8 @@ const Profile = () => {
             </Col>
             <Col xs={24} md={24} lg={8}>
               <Form.Item
-                label="Fees Per Cunsaltation"
-                name="feesPerCunsaltation"
+                label="Fees "
+                name="fees"
                 required
                 rules={[{ required: true }]}
               >

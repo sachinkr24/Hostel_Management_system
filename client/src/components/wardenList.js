@@ -1,18 +1,32 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const wardenList = ({ warden }) => {
+const WardenList = ({ warden }) => {
   const navigate = useNavigate();
+
+  const containerStyle = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    marginBottom: "60px", // Adjust as needed
+  };
+
+  const cardStyle = {
+    cursor: "pointer",
+    width: "300px", 
+    textAlign: "center", 
+  };
+
   return (
-    <>
-    <div><h6>Select Hostel to register complaint</h6></div>
+    <div style={containerStyle}>
+      <h6>Select Hostel to register complaint</h6>
       <div
         className="card m-2"
-        style={{ cursor: "pointer" }}
+        style={cardStyle}
         onClick={() => navigate(`/warden/book-appointment/${warden._id}`)}
       >
         <div className="card-header">
-        Mr/Mrs {warden.firstName} {warden.lastName}
+          Mr/Mrs {warden.firstName} {warden.lastName}
         </div>
         <div className="card-body">
           <p>
@@ -29,8 +43,8 @@ const wardenList = ({ warden }) => {
           </p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
-export default wardenList;
+export default WardenList;

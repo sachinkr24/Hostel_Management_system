@@ -24,14 +24,19 @@ const Layout = ({ children }) => {
     },
     {
       name: "Complaints",
-      path: "/doctor-appointments",
+      path: "/complaints",
       icon: "fa-solid fa-list",
     },
     
     {
       name: "Profile",
-      path: `/doctor/profile/${user?._id}`,
+      path: `/warden/profile/${user?._id}`,
       icon: "fa-solid fa-user",
+    },
+    {
+      name: "Notice Board",
+      path: "/notice",
+      icon: "fa-regular fa-file",
     },
   ];
 

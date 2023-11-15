@@ -2,14 +2,18 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Layout from "./../components/Layout";
 import { Row } from "antd";
-import wardenList from "../components/wardenList";
+import WardenList from "../components/WardenList";
+
+ 
+
 const HomePage = () => {
   // login user data
-  const[wardens,setwardens] = useState([])
+  const [wardens, setWardens] = useState([]);
+///getAllwardens route in wardenRoutes
   const getUserData = async () => {
     try {
       const res = await axios.get(
-        "/api/v1/user/getAllwardens",
+        "/api/v1/user/getAllwardens",// sending data for verification to the the backend
         {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
@@ -17,8 +21,8 @@ const HomePage = () => {
         }
       );
 
-      if(res.data.success){
-        setwardens(res.data.data)
+      if (res.data.success) {
+        setWardens(res.data.data);
       }
     } catch (error) {
       console.log(error);
@@ -29,14 +33,11 @@ const HomePage = () => {
     getUserData();
   }, []);
 
-
-
-  
   return (
     <Layout>
       <h1 className="text-center">Home Page</h1>
       <Row>
-        {wardens && wardens.map((warden) => <wardenList warden={warden} />)}
+        {wardens && wardens.map((warden) => <WardenList warden={warden} />)}
       </Row>
     </Layout>
   );

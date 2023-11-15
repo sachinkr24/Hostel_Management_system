@@ -34,7 +34,7 @@ const NotificationPage = () => {
     } catch (error) {
       dispatch(hideLoading());
       console.log(error);
-      message.error("somthing went wrong");
+      message.error("something went wrong");
     }
   };
   const handleDeleteAllRead = async() => {
@@ -61,7 +61,7 @@ const NotificationPage = () => {
     } catch (error) {
       dispatch(hideLoading());
       console.log(error);
-      message.error("somthing went wrong");
+      message.error("something went wrong");
     }
 
 

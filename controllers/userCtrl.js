@@ -5,6 +5,10 @@ const wardenModel = require("../models/wardenModel");
 const appointmentModel = require("../models/appointmentModel");
 const moment = require('moment')
 
+const gfs = require('../config/gridfs');
+const Notice = require('../models/NoticeModel');
+const upload = require('../config/multer');
+
 const registerController = async (req, res) => {
   try {
     const exisitingUser = await userModel.findOne({ email: req.body.email });
@@ -53,7 +57,7 @@ const loginController = async (req, res) => {
     res.status(500).send({ message: `Error in Login CTRL ${error.message}` });
   }
 };
-
+//token validation
 const authController = async (req, res) => {
   try {
     const user = await userModel.findById({ _id: req.body.userId });
@@ -91,7 +95,7 @@ const applywardenController = async (req, res) => {
       data: {
         wardenId: newwarden._id,
         name: newwarden.firstName + " " + newwarden.lastName,
-        onClickPath: "/admin/docotrs",
+        onClickPath: "/admin/wardens",
       },
     });
     await userModel.findByIdAndUpdate(adminUser._id, { notification });
@@ -238,6 +242,48 @@ const bookingAvailabilityController = async (req, res) => {
   }
 };
 
+const uploadFile = upload.single('file');
+
+const handleFileUpload = async (req, res) => {
+  try {
+    const { file } = req;
+    const { title } = req.body;
+
+    // Create write stream to store the file content in GridFS
+    const writeStream = gfs.createWriteStream({
+      filename: file.originalname,
+      metadata: { title },
+    });
+
+    // Pipe the file buffer to the write stream
+    writeStream.write(file.buffer);
+    writeStream.end();
+
+    // Save file metadata to MongoDB
+    const notice = new Notice({
+      title,
+      filename: file.originalname,
+    });
+    await notice.save();
+
+    res.status(200).json({
+      success: true,
+      message: 'File uploaded successfully',
+    });
+  } catch (error) {
+    console.error('Error uploading file:', error);
+    res.status(500).json({
+      success: false,
+      error,
+      message: 'Error uploading file',
+    });
+  }
+};
+
+
+
+
+
 const userAppointmentsController =async(req,res)=>{
   try {
     const appointments = await appointmentModel.find({
@@ -268,5 +314,7 @@ module.exports = {
   getAllwardensController,
   bookAppointmentController,
   bookingAvailabilityController,
+  uploadFile,
+  handleFileUpload,
   userAppointmentsController
 };

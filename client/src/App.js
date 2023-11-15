@@ -9,11 +9,12 @@ import PublicRoute from "./components/PublicRoute";
 import Applywarden from "./pages/Applywarden";
 import NoificationPage from "./pages/NoificationPage";
 import Users from "./pages/admin/Users";
-import wardens from "./pages/admin/wardens";
+import Wardens from "./pages/admin/wardens";
 import Profile from "./pages/warden/Profile"
 import BookingPage from "./pages/BookingPage";
 import Appointments from "./pages/Appointments";
-import wardenAppointments from "./pages/warden/wardenAppointments";
+import WardenAppointments from "./pages/warden/WardenAppointments";
+import Notice from "./pages/Notice";
 function App() {
   const { loading } = useSelector((state) => state.alerts);
   return (
@@ -69,7 +70,7 @@ function App() {
               path="/admin/wardens"
               element={
                 <ProtectedRoute>
-                  <wardens />
+                  <Wardens />
                 </ProtectedRoute>
               }
             />
@@ -85,7 +86,7 @@ function App() {
             />
 
              <Route
-              path="/appointments"
+              path="/complaints"
               element={
                 <ProtectedRoute>
                   <Appointments />
@@ -93,11 +94,20 @@ function App() {
               }
             />
 
-<Route
+            <Route
               path="/warden-appointments"
               element={
                 <ProtectedRoute>
-                  <wardenAppointments />
+                  <WardenAppointments />
+                </ProtectedRoute>
+              }
+            />
+
+             <Route
+              path="/Notice"
+              element={
+                <ProtectedRoute>
+                  <Notice />
                 </ProtectedRoute>
               }
             />

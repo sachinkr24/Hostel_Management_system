@@ -5,13 +5,23 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { showLoading, hideLoading } from "../redux/features/alertSlice";
 import axios from "axios";
-import moment from "moment";
+/*
+Make http requests from node.js
+Supports the Promise API
+Intercept request and response
+Transform request and response data
+Cancel requests
+Timeouts
+Posting HTML forms as JSON
+Automatic JSON data handling in response*/
+import moment from "moment";//used for parsing, validating, manipulating, and displaying dates and times in JavaScript. 
 
 const Applywarden = () => {
-  const { user } = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user); //It takes in a function argument that returns the part of the state that you want.
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const dispatch = useDispatch();//returns reference to dispatch function
+  const navigate = useNavigate();//hook provides a simple and intuitive API for navigating between pages in your React application.
+  
   //handle form
   const handleFinish = async (values) => {
     try {

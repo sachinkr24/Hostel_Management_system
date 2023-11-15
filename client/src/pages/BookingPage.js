@@ -109,7 +109,7 @@ const BookingPage = () => {
             <h4>
               Dr.{wardens.firstName} {wardens.lastName}
             </h4>
-            <h4>Hostel : {wardens.feesPerCunsaltation}</h4>
+            <h4>Hostel : {wardens.fees}</h4>
             <h4>
               Timings : {wardens.timings && wardens.timings[0]} -{" "}
               {wardens.timings && wardens.timings[1]}{" "}
@@ -136,7 +136,11 @@ const BookingPage = () => {
                 }}
               />
 
-<Input type="text" placeholder="Write Your complaint" />
+            <Input type="text" placeholder="Write Your complaint" />
+
+
+
+
               <button className="btn btn-primary mt-2" onClick={handleAvailability}>
                 Check Availability
               </button>

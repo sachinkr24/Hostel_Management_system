@@ -111,4 +111,5 @@ const getwardenByIdController = async (req, res) => {
     }
 
   }
-module.exports = { getwardenInfoController, updateProfileController , getwardenByIdController,wardenAppointmentsController,updateStatusController};
+module.exports = { getwardenInfoController, updateProfileController ,
+   getwardenByIdController,wardenAppointmentsController,updateStatusController};

@@ -6,11 +6,11 @@ const appointmentSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    doctorId: {
+    wardenId: {
       type: String,
       required: true,
     },
-    doctorInfo: {
+    wardenInfo: {
       type: String,
       required: true,
     },

@@ -1,3 +1,4 @@
+//user menu
 export const userMenu = [
     {
       name: "Home",
@@ -5,19 +6,25 @@ export const userMenu = [
       icon: "fa-solid fa-house",
     },
     {
+      name: "Register Complaint",
+      path: "/Profile",
+      icon: "fa-regular fa-file",
+    },
+    {
       name: "Complaints",
-      path: "/appointments",
+      path: "/complaints",
       icon: "fa-solid fa-list",
     },
     {
       name: "Apply warden",
       path: "/apply-warden",
-      icon: "fa-solid fa-user-warden",
-    },
-    {
-      name: "Profile",
-      path: "/profile",
       icon: "fa-solid fa-user",
+    },
+    
+    {
+      name: "Notice Board",
+      path: "/notice",
+      icon: "fa-regular fa-file",
     },
   ];
   
@@ -32,7 +39,7 @@ export const userMenu = [
     {
       name: "Wardens",
       path: "/admin/wardens",
-      icon: "fa-solid fa-user-warden",
+      icon: "fa-solid fa-user",
     },
     {
       name: "Users",
@@ -41,7 +48,12 @@ export const userMenu = [
     },
     {
       name: "Profile",
-      path: "/profile",
+      path: "/warden/profile",
       icon: "fa-solid fa-user",
+    },
+    {
+      name: "Notice Board",
+      path: "/notice",
+      icon: "fa-regular fa-file",
     },
   ];
