@@ -1,10 +1,21 @@
-// // routes/uploadRoute.js
+const express = require("express");
+const {
+    postNoticeController,getNoticesController
+} = require("../controllers/uploadController");
+const authMiddleware = require("../middlewares/authMiddleware");
 
-// const express = require('express');
-// const router = express.Router();
-// const uploadController = require('../controllers/uploadController');
+const router = express.Router();
 
-// // Apply the uploadFile middleware to the route
-// router.post('/upload', authMiddleware, uploadController.uploadFile);
 
-// module.exports = router;
+router.post("/postNotice",
+//  authMiddleware,
+ postNoticeController); 
+
+router.get(
+  "/getNotice",
+  // authMiddleware,
+  getNoticesController
+);
+
+
+module.exports = router;

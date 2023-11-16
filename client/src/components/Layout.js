@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
     navigate("/login");
   };
 
-  const doctorMenu = [
+  const WardenMenu = [
     {
       name: "Home",
       path: "/",
@@ -38,13 +38,18 @@ const Layout = ({ children }) => {
       path: "/notice",
       icon: "fa-regular fa-file",
     },
+    {
+      name: "Upload notice",
+      path: "/notice-form",
+      icon: "fa-regular fa-file",
+    },
   ];
 
   // redering menu list
   const SidebarMenu = user?.isAdmin
  ? adminMenu 
- : user?.isDoctor
- ?doctorMenu
+ : user?.isWarden
+ ?WardenMenu
  : userMenu;
   return (
     <>

@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  isDoctor: {
+  isWarden: {
     type: Boolean,
     default: false,
   },
@@ -33,4 +33,4 @@ const userSchema = new mongoose.Schema({
 
 const userModel = mongoose.model("users", userSchema);
 
-module.exports = userModel;
+module.exports = userModel; 

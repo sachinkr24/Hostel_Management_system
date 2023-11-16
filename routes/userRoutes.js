@@ -43,7 +43,7 @@ router.post(
   authMiddleware,
   deleteAllNotificationController
 );
-
+ 
 router.get(
   "/getAllwardens",
   authMiddleware,

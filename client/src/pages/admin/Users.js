@@ -37,7 +37,7 @@ const Users = () => {
     },
     {
       title: "warden",
-      dataIndex: "iswarden",
+      dataIndex: "isWarden",
       render: (text, record) => <span>{record.iswarden ? "Yes" : "No"}</span>,
     },
     //block

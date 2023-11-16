@@ -49,7 +49,7 @@ const changeAccountStatusController = async (req, res) => {
       message: `Your warden Account Request Has ${status} `,
       onClickPath: "/notification",
     });
-    user.iswarden=status === "approved" ? true : false;
+    user.isWarden=status === "approved" ? true : false;
     await user.save();
     res.status(201).send({
       success: true,

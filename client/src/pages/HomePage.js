@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Layout from "./../components/Layout";
 import { Row } from "antd";
-import WardenList from "../components/WardenList";
+import WardenList from "../components/wardenList";
 
  
 

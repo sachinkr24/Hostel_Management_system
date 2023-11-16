@@ -9,7 +9,7 @@ import moment from "moment";
 
 const Profile = () => {
   const { user } = useSelector((state) => state.user);
-  const [warden, setwarden] = useState(null);
+  const [warden, setwarden] = useState();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const params = useParams();
@@ -60,6 +60,7 @@ const Profile = () => {
       );
       if (res.data.success) {
         setwarden(res.data.data);
+        console.log(warden)
       }
     } catch (error) {
       console.log(error);

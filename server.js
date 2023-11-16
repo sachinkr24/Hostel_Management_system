@@ -14,7 +14,7 @@ connectDB();
 const app = express();
 
 //middlewares
-app.use(express.json());
+app.use(express.json()); 
 app.use(moragan("dev"));  // logging HTTP requests 
 // displays concise output with the HTTP method, status, response time, 
 //and request URL. This is often used during development to easily see incoming requests and their details.
@@ -27,6 +27,7 @@ app.use(moragan("dev"));  // logging HTTP requests
 app.use("/api/v1/user", require("./routes/userRoutes"));
 app.use("/api/v1/admin", require("./routes/adminRoutes"));
 app.use("/api/v1/warden", require("./routes/wardenRoutes"));
+app.use("/api/v1/notice", require("./routes/uploadRoute"));
 
 //port
 const port = process.env.PORT || 8080;

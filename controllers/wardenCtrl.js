@@ -3,6 +3,7 @@ const appointmentModel = require("../models/appointmentModel");
 const userModel = require("../models/userModels");
 const getwardenInfoController = async (req, res) => {
   try {
+
     const warden = await wardenModel.findOne({ userId: req.body.userId });
     res.status(200).send({
       success: true,
