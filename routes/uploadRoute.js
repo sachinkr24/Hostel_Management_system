@@ -8,12 +8,12 @@ const router = express.Router();
 
 
 router.post("/postNotice",
-//  authMiddleware,
+ authMiddleware,
  postNoticeController); 
 
 router.get(
   "/getNotice",
-  // authMiddleware,
+   authMiddleware,
   getNoticesController
 );
 

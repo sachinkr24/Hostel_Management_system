@@ -13,9 +13,9 @@ import Wardens from "./pages/admin/wardens";
 import Profile from "./pages/warden/Profile"
 import BookingPage from "./pages/BookingPage";
 import Appointments from "./pages/Appointments";
-import WardenAppointments from "./pages/warden/wardenAppointments";
-import NoticeList from "./pages/Notice";
+import WardenAppointments from "./pages/warden/WardenAppointments";
 import NoticeForm from "./pages/UploadNotice";
+import NoticeList from "./pages/Notice";
 function App() {
   const { loading } = useSelector((state) => state.alerts);
   return (
@@ -75,22 +75,6 @@ function App() {
                 </ProtectedRoute>
               }
             />
-              <Route
-              path="/notice"
-              element={
-               <ProtectedRoute>
-                  <NoticeList />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/notice-form"
-              element={
-                <ProtectedRoute>
-                  <NoticeForm />
-               </ProtectedRoute>
-              }
-            />
 
             <Route
               path="/notification"
@@ -116,6 +100,24 @@ function App() {
               element={
                 <ProtectedRoute>
                   <WardenAppointments />
+                </ProtectedRoute>
+              }
+            />
+
+             <Route
+              path="/Notice"
+              element={
+                <ProtectedRoute>
+                  <NoticeList />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/UploadNotice"
+              element={
+                <ProtectedRoute>
+                  <NoticeForm />
                 </ProtectedRoute>
               }
             />

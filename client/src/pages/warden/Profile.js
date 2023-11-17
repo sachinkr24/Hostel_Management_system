@@ -7,6 +7,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../../redux/features/alertSlice";
 import moment from "moment";
 
+
+
+
+
 const Profile = () => {
   const { user } = useSelector((state) => state.user);
   const [warden, setwarden] = useState();
@@ -73,12 +77,13 @@ const Profile = () => {
   }, []);
   return (
     <Layout>
+      <div className="profile-container">
       <h1>Manage Profile</h1>
       {warden && (
         <Form
-          layout="vertical"
-          onFinish={handleFinish}
-          className="m-3"
+        layout="vertical"
+        onFinish={handleFinish}
+        className="m-3"
           initialValues={{
             ...warden,
             timings: [
@@ -184,13 +189,59 @@ const Profile = () => {
             </Col>
             <Col xs={24} md={24} lg={8}></Col>
             <Col xs={24} md={24} lg={8}>
-              <button className="btn btn-primary form-btn" type="submit">
+              <button className="btn btn-primary form-btn" style={{width:"50px"}} type="submit">
                 Update
               </button>
             </Col>
           </Row>
         </Form>
       )}
+      </div>
+      <style>{`
+
+/* Profile.css */
+
+.profile-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-container h1 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+
+.profile-container .ant-row {
+  margin-right: -8px;
+  margin-left: -8px;
+}
+
+.profile-container .ant-col {
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.profile-container .ant-form {
+  width: 100%;
+}
+
+/*  style to center the container */
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form-btn {
+  width: 50%;
+
+
+`}</style>
     </Layout>
   );
 };

@@ -35,12 +35,12 @@ const Layout = ({ children }) => {
     },
     {
       name: "Notice Board",
-      path: "/notice",
+      path: "/Notice",
       icon: "fa-regular fa-file",
     },
     {
       name: "Upload notice",
-      path: "/notice-form",
+      path: "/UploadNotice",
       icon: "fa-regular fa-file",
     },
   ];
