@@ -16,6 +16,7 @@ import Appointments from "./pages/Appointments";
 import WardenAppointments from "./pages/warden/wardenAppointments";
 import NoticeList from "./pages/Notice";
 import NoticeForm from "./pages/UploadNotice";
+import Addcomplaint from "./pages/addcomp";
 function App() {
   const { loading } = useSelector((state) => state.alerts);
   return (
@@ -103,10 +104,10 @@ function App() {
             />
 
              <Route
-              path="/complaints"
+              path="/addcomp"
               element={
                 <ProtectedRoute>
-                  <Appointments />
+                  <Addcomplaint />
                 </ProtectedRoute>
               }
             />

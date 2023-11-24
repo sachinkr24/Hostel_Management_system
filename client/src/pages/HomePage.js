@@ -3,41 +3,42 @@ import axios from "axios";
 import Layout from "./../components/Layout";
 import { Row } from "antd";
 import WardenList from "../components/wardenList";
+import Posts from "./posts";
 
  
 
 const HomePage = () => {
   // login user data
-  const [wardens, setWardens] = useState([]);
-///getAllwardens route in wardenRoutes
-  const getUserData = async () => {
-    try {
-      const res = await axios.get(
-        "/api/v1/user/getAllwardens",// sending data for verification to the the backend
-        {
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("token"),
-          },
-        }
-      );
+//   const [wardens, setWardens] = useState([]);
+// ///getAllwardens route in wardenRoutes
+//   const getUserData = async () => {
+//     try {
+//       const res = await axios.get(
+//         "/api/v1/user/getAllwardens",// sending data for verification to the the backend
+//         {
+//           headers: {
+//             Authorization: "Bearer " + localStorage.getItem("token"),
+//           },
+//         }
+//       );
 
-      if (res.data.success) {
-        setWardens(res.data.data);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+//       if (res.data.success) {
+//         setWardens(res.data.data);
+//       }
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
 
-  useEffect(() => {
-    getUserData();
-  }, []);
+//   useEffect(() => {
+//     getUserData();
+//   }, []);
 
   return (
     <Layout>
       <h1 className="text-center">Home Page</h1>
       <Row>
-        {wardens && wardens.map((warden) => <WardenList warden={warden} />)}
+        <Posts/>
       </Row>
     </Layout>
   );

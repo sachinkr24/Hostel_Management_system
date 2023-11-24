@@ -10,10 +10,14 @@ const {
   getAllwardensController,
   bookAppointmentController,
   uploadFile,
-  bookingAvailabilityController
+  bookingAvailabilityController,
+  complaintController,
+  getallcomplaintcontroller,
 
 } = require("../controllers/userCtrl");
 const authMiddleware = require("../middlewares/authMiddleware");
+const upload = require("../middlewares/upload");
+const { imageController, getImage } = require("../controllers/imageCtrl");
 
 //router onject
 const router = express.Router();
@@ -30,6 +34,14 @@ router.post("/getUserData", authMiddleware, authController);
 
 
 router.post("/apply-warden", authMiddleware, applywardenController);
+
+router.post("/addcomp",complaintController);
+
+router.post("/file/upload",upload.single('file'),imageController);
+
+router.get("/getcomp",getallcomplaintcontroller);
+
+router.get("/file/:filename",getImage);
 
 
 router.post(

@@ -3,11 +3,13 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const wardenModel = require("../models/wardenModel");
 const appointmentModel = require("../models/appointmentModel");
+const complaintModel = require("../models/complaintMode");
 const moment = require('moment')
 
 const gfs = require('../config/gridfs');
 const Notice = require('../models/NoticeModel');
 const upload = require('../config/multer');
+
 
 const registerController = async (req, res) => {
   try {
@@ -304,6 +306,47 @@ const userAppointmentsController =async(req,res)=>{
   }
 }
 
+const complaintController=async(req,res)=>{
+  try{
+    console.log(req.body);
+    const complaint=new complaintModel(req.body);
+    complaint.save();
+    //FOR SENDING NOTIFICATION
+    // const adminUser =await userModel.findOne({isAdmin:true});
+    // const notification=adminUser.notification;
+    // notification.push({
+    //   type: 'compalint',
+    //   message: `New complaint from ${complaint.name}`
+    // })
+    res.status(200).send({
+      success: true,
+      message:"complaint registered ",
+    });
+
+  }
+    catch(error){
+      console.log(error); 
+      res.status(500).send({
+        success: false,
+        error,
+        message: "Error in user complaint",
+      });
+    }
+}
+
+const getallcomplaintcontroller= async(req,res)=>{
+  try{
+    const complaint = await complaintModel.find({});
+    return res.status(200).json({
+    isSuccess: true,
+    data: complaint
+    });
+  }
+  catch(error){
+   res.status(500).json({msg : "hatttttttttt",
+  error: error});
+  }
+}
 module.exports = {
   loginController,
   registerController,
@@ -316,5 +359,7 @@ module.exports = {
   bookingAvailabilityController,
   uploadFile,
   handleFileUpload,
-  userAppointmentsController
+  userAppointmentsController,
+  complaintController,
+  getallcomplaintcontroller
 };
