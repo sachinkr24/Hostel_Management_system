@@ -310,19 +310,19 @@ const complaintController=async(req,res)=>{
   try{
     console.log(req.body);
     const complaint=new complaintModel(req.body);
-    complaint.save();
+    await complaint.save();
     //FOR SENDING NOTIFICATION
-    // const adminUser =await userModel.findOne({isAdmin:true});
-    // const notification=adminUser.notification;
-    // notification.push({
-    //   type: 'compalint',
-    //   message: `New complaint from ${complaint.name}`
-    // })
+    const warden =await userModel.findOne({isWarden:true});
+    const notification=warden.notification;
+    notification.push({
+      type: 'compalint',
+      message: `New complaint from ${complaint.name}`
+    });
     res.status(200).send({
       success: true,
       message:"complaint registered ",
     });
-
+   console.log(notification);
   }
     catch(error){
       console.log(error); 

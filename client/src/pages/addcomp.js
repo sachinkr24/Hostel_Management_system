@@ -58,7 +58,8 @@ const Addcomplaint = () => {
     picture: '',
     createdDate: new Date(),
     name: '',
-    hostelName: ''
+    hostelName: '',
+    status: false
 }
 
 const [post, setPost] = useState(initialPost);
