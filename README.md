@@ -1,7 +1,8 @@
-# Mess_Manager
+# Hostel_Management_system
 
 
-Mess_Manager is a web application designed to streamline the management of a college or hostel mess system. The project aims to provide a platform where users, mainly students and administrators, can efficiently handle and address issues related to the mess, from registering complaints to managing the daily menu.
+
+Hostel_Management_system is a web application designed to streamline the management of a college or hostel mess system. The project aims to provide a platform where users, mainly students and administrators, can efficiently handle and address issues related to the mess, from registering complaints to managing the daily menu.
 
 ## Technology Stack
 - HTML
